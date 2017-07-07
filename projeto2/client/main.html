@@ -1,0 +1,288 @@
+<head>
+
+
+    <title>JANNE STORE</title>
+    <link rel="shortcut icon" href="img/team/5.jpg">
+
+    <!-- Bootstrap Core CSS -->
+    <link href="css/bootstrap.min.css" rel="stylesheet" type="text/css">
+
+    <!-- Fonts -->
+    <link href="font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+  <link href="css/animate.css" rel="stylesheet" />
+    <!-- Squad theme CSS -->
+    <link href="css/style.css" rel="stylesheet">
+  <link href="color/default.css" rel="stylesheet">
+
+</head>
+
+<body>
+   <nav class="navbar navbar-custom navbar-fixed-top" role="navigation">
+
+    <div class="navbar-header page-scroll">
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-main-collapse">
+                <i class="fa fa-bars"></i>
+                </button>
+                
+                
+      </div>
+     <div class="collapse navbar-collapse navbar-right navbar-main-collapse">
+          <ul class="nav navbar-nav">
+            <li> <a>{{> loginButtons }}</a> </li>
+            <li class="active"><a href="#intro">Home</a></li>
+            <li><a href="#modafeminina">Moda Feminina</a></li>
+            <li><a href="#modahomem">Moda Homem</a></li>
+            <li><a href="#acessorios">Acessórios</a></li>
+            <li><a href="#contact">Contato</a></li>      
+          </ul>
+    </div>
+  </nav> 
+
+  <!--{{usuario}}-->
+  {{> janela_cadastro}}
+  
+  
+  {{> section1}}
+  {{> meutemplate}}
+  {{> meutemplate1}}
+  {{> meutemplate2}}
+  {{> meutemplate3}}
+</body>
+
+<template name="meutemplate3"> 
+  <section id="contact" class="home-section text-center">
+      <div class="heading-contact">
+        <div class="container">
+        <div class="row">
+          <div class="col-lg-8 col-lg-offset-2">
+            <div class="wow bounceInDown" data-wow-delay="0.4s">
+            <div class="section-heading">
+            <h2>Entre em contato</h2>
+            <i class="fa fa-2x fa-angle-down"></i>
+
+            </div>
+            </div>
+          </div>
+        </div>
+        </div>
+      </div>
+      <div class="container">
+
+      <div class="row">
+        <div class="col-lg-2 col-lg-offset-5">
+          <hr class="marginbot-50">
+        </div>
+      </div>
+      <div class="row">
+          <div class="col-lg-8">
+              <div class="boxed-grey">
+                  <form id="contact-form">
+                  <div class="row">
+                      <div class="col-md-6">
+                          <div class="form-group">
+                              <label for="name">
+                                  Nome</label>
+                              <input type="text" class="form-control" id="name" placeholder="Enter name" required="required" />
+                          </div>
+                          <div class="form-group">
+                              <label for="email">
+                                  Email</label>
+                              <div class="input-group">
+                                  <span class="input-group-addon"><span class="glyphicon glyphicon-envelope"></span>
+                                  </span>
+                                  <input type="email" class="form-control" id="email" placeholder="Enter email" required="required" /></div>
+                          </div>
+                          <div class="form-group">
+                              <label for="subject">
+                                  Assunto</label>
+                              <select id="subject" name="subject" class="form-control" required="required">
+                                  <option value="na" selected="">Escolha uma opção:</option>
+                                  <option value="service">Sobre meu pedido</option>
+                                  <option value="suggestions">Sugestão</option>
+                                  <option value="product">Reclamação</option>
+                                  <option value="Inf">Informação</option>
+                              </select>
+                          </div>
+                      </div>
+                      <div class="col-md-6">
+                          <div class="form-group">
+                              <label for="name">
+                                  Menssagen</label>
+                              <textarea name="message" id="message" class="form-control" rows="9" cols="25" required="required"
+                                  placeholder="Message"></textarea>
+                          </div>
+                      </div>
+                      <div class="col-md-12">
+                          <button type="submit" class="btn btn-skin pull-right" id="btnContactUs">
+                              Enviar Mensagen</button>
+                      </div>
+                  </div>
+                  </form>
+              </div>
+          </div>
+      
+      <div class="col-lg-4">
+        <div class="widget-contact">
+          <h5>Contatos</h5>
+          
+          <address>
+            <strong>Telefone</strong><br>         
+            <abbr title="Vivo">(49) 9192-9915</abbr> <br />
+            <abbr title="Fixo">(49) 3199-1966</abbr> 
+          </address>
+
+          <address>
+            <strong>Email</strong><br>
+            <a href="mailto:#">name@example.com</a>
+          </address>     
+        
+        </div>  
+      </div>
+      </div>  
+
+      </div>
+  </section>
+</template>
+
+<template name="meutemplate2"> 
+<section id="acessorios" class="home-section text-center">
+  <h2>Moda Acessórios</h2>
+    {{#if currentUser}}
+            <li><button class="btn btn-success" id="mostra_janela">Adicionar imagem</button></li>
+            {{/if}} 
+  {{#each meuarray2}}
+  <div class="container col-xs-12 col-md-3" id="{{_id}}">
+    <div class="row">
+      <div class="thumbnail">
+        <img class="imagem_control" src="{{src}}" alt="{{title}}"/>
+          <div class="caption">
+            <h3>{{title}}</h3> <!-- exibir título -->
+            <p>{{descript}}</p> <!-- exibir autor -->
+             <p>                   
+                   {{> starsRating mutable=true id="avalia_imagem" image_id=_id rating=stars}}
+           </p>
+           {{#if currentUser}}
+            <p><button class="btn btn-warning" id="deleta_imagem"> Remover Imagem</button></p>
+            {{/if}}     
+            </div>
+        </div>
+    </div>
+  </div>
+{{/each}}
+</section>
+</template>
+
+
+
+<template name="meutemplate1"> 
+<section id="modahomem"  class="home-section text-center">
+  <h2>Moda Masculina</h2>
+  {{#if currentUser}}
+            <li><button class="btn btn-success" id="mostra_janela">Adicionar imagem</button></li>
+            {{/if}} 
+  {{#each meuarray1}}
+  <div class="container col-xs-12 col-md-3" id="{{_id}}">
+    <div class="row">
+      <div class="thumbnail">
+        <img class="imagem_control" src="{{src}}" alt="{{title}}"/>
+          <div class="caption">
+            <h3>{{title}}</h3> <!-- exibir título -->
+            <p>{{descript}}</p> <!-- exibir autor -->
+             <p>                   
+                   {{> starsRating mutable=true id="avalia_imagem" image_id=_id rating=stars}}
+           </p>
+           {{#if currentUser}}
+            <p><button class="btn btn-warning" id="deleta_imagem"> Remover Imagem</button></p>
+            {{/if}}     
+            </div>
+        </div>
+    </div>
+  </div>
+{{/each}}
+</section>
+</template>
+
+
+<template name="meutemplate"> 
+<section id="modafeminina"  class="home-section text-center">
+  <h2>Moda Feminina</h2>
+  {{#if currentUser}}
+            <li><button class="btn btn-success" id="mostra_janela">Adicionar imagem</button></li>
+            {{/if}} 
+  {{#each meuarray}}
+  <div class="container col-xs-12 col-md-3" id="{{_id}}">
+    <div class="row">
+      <div class="thumbnail">
+        <img class="imagem_control" src="{{src}}" alt="{{title}}"/>
+          <div class="caption">
+            <h3>{{title}}</h3> <!-- exibir título -->
+            <p>{{descript}}</p> <!-- exibir autor -->
+             <p>                   
+                   {{> starsRating mutable=true id="avalia_imagem" image_id=_id rating=stars}}
+           </p>
+           {{#if currentUser}}
+            <p><button class="btn btn-warning" id="deleta_imagem"> Remover Imagem</button></p>
+            {{/if}}     
+            </div>
+        </div>
+    </div>
+  </div>
+{{/each}}
+</section>
+</template>
+
+<template name="section1">
+<section id="intro" class="intro">
+  {{#each teste1}}
+ 
+  
+    <div class="slogan">
+    <img src="{{src}}">
+      <h2></h2>
+    </div>
+    <div class="page-scroll">
+
+      <a href="#modafeminina" class="btn btn-circle">
+        <i class="fa fa-angle-double-down animated"></i>
+      </a>
+    </div>
+    
+    {{/each}}
+    </section>
+</template>
+
+
+<template name="janela_cadastro">
+  <div class="modal fade" id="modal_form">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <div class="modal-title">
+                    
+                    </div>
+                    <div class="modal-body">
+                      <form id="form_cadastro">
+                        <fieldset>
+                            <label>URL </label>
+                            <input id="src" type="text" class="form-control">
+                            <label>Title </label>
+                            <input id="title" type="text" class="form-control">
+                            <label>Autor </label>
+                            <input id="author" type="text" class="form-control">
+                            <br>
+                            <label>Descrição </label>
+                            <input id="descript" type="text" class="form-control">
+                            <br>
+                            <button type="submit" class="btn btn-success">Salvar</button>
+                        </fieldset>
+                      </form>            
+          
+                    </div>
+                    <div class="modal-footer">
+                        <button data-dismiss="modal" class="btn btn-warning">Fechar</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>            
+</template>
